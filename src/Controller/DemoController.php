@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Dto\PagedItems;
-use App\Services\FakeProductRepository;
-use App\Services\Paginator;
+use App\Repository\FakeProductRepository;
+use App\Service\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

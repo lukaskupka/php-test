@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Service;
 
-use App\Dto\FakeProductItem;
+use App\Dto\Item;
 
 use function ceil;
 use function count;
 
 class Paginator
 {
-    /** @param array<FakeProductItem> $pagedItems */
+    /** @param array<Item> $pagedItems */
     public function __construct(
         readonly private int $defaultPageSize,
         readonly private int $mobilePageSize,
@@ -21,7 +21,7 @@ class Paginator
     ) {
     }
 
-    /** @param array<FakeProductItem> $items */
+    /** @param array<Item> $items */
     public function init(array $items, int $currentPage, bool $isMobile = false): void
     {
         $pageSize = $isMobile
@@ -34,7 +34,7 @@ class Paginator
         $this->pagedItems = array_slice($items, ($currentPage - 1) * $pageSize, $pageSize);
     }
 
-    /** @return array<FakeProductItem> */
+    /** @return array<Item> */
     public function getPagedItems(): array
     {
         return $this->pagedItems;

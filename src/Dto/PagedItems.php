@@ -6,7 +6,7 @@ namespace App\Dto;
 
 readonly class PagedItems
 {
-    /** @param array<FakeProductItem> $getPagedItems */
+    /** @param array<Item> $getPagedItems */
     public function __construct(
         private array $getPagedItems,
         private int $getCurrentPage,
@@ -16,7 +16,7 @@ readonly class PagedItems
     ) {
     }
 
-    /** @return array<FakeProductItem> */
+    /** @return array<Item> */
     public function getGetPagedItems(): array
     {
         return $this->getPagedItems;

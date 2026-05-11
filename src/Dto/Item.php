@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Dto;
 
-readonly class FakeProductItem
+readonly class Item
 {
     public function __construct(private string $name, private int $priceCents)
     {

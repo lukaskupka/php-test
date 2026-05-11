@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Repository;
 
-use App\Dto\FakeProductItem;
+use App\Dto\Item;
 
 use function random_int;
 
@@ -15,7 +15,7 @@ class FakeProductRepository
     /**
      * Creates fake products
      *
-     * @return array<FakeProductItem>
+     * @return array<Item>
      */
     public function loadCollection(): array
     {
@@ -23,7 +23,7 @@ class FakeProductRepository
         $products = [];
 
         for ($i = 1; $i <= self::FAKE_PRODUCT_COUNT; $i++) {
-            $products[] = new FakeProductItem(
+            $products[] = new Item(
                 'Product #' . str_pad((string) $i, 3, '0', STR_PAD_LEFT),
                 random_int(100, 999) * 100,
             );
