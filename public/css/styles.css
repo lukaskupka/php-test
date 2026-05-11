@@ -1,0 +1,50 @@
+:root {
+    /* Neutrální barvy */
+    --text-main: #232934;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --app-bg: #F8FAFC;
+
+    /* Sémantické barvy */
+    --status-success: #10B981;
+    --status-warning: #F59E0B;
+    --status-error: #EF4444;
+    --status-info: #3B82F6;
+
+    --bs-primary: #42bfb7;
+    --bs-primary-rgb: rgb(66, 191, 183);
+    --bs-primary-hover: #369c97;
+
+    --bs-secondary: #293141;
+    --bs-secondary-rgb: rgb(41, 49, 65);
+
+    /* REDEFINICE ODKAZŮ (LINKS) */
+    --bs-link-decoration: none;
+}
+
+body {
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.page-header {
+    color: var(--text-main);
+}
+
+.product-wrapper {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-weight: bold;
+}
