@@ -24,7 +24,7 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Services\Paginator:
+    App\Service\Paginator:
         arguments:
             $defaultPageSize: '%app.paginator.default_page_size%'
             $mobilePageSize: '%app.paginator.mobile_page_size%'
