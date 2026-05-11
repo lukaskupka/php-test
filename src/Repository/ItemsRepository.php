@@ -8,9 +8,11 @@ use App\Dto\Item;
 
 use function random_int;
 
-class ItemsRepository
+readonly class ItemsRepository
 {
-    private const FAKE_PRODUCT_COUNT = 237;
+    public function __construct(private int $fakeProductCount)
+    {
+    }
 
     /**
      * Creates fake products
@@ -22,7 +24,7 @@ class ItemsRepository
         /* create fake data */
         $products = [];
 
-        for ($i = 1; $i <= self::FAKE_PRODUCT_COUNT; $i++) {
+        for ($i = 1; $i <= $this->fakeProductCount; $i++) {
             $products[] = new Item(
                 'Product #' . str_pad((string) $i, 3, '0', STR_PAD_LEFT),
                 random_int(100, 999) * 100,

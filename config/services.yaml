@@ -9,6 +9,7 @@
 parameters:
     app.paginator.default_page_size: 20
     app.paginator.mobile_page_size: 10
+    app.fake_product_count: 87
 
 services:
     # default configuration for services in *this* file
@@ -28,3 +29,7 @@ services:
         arguments:
             $defaultPageSize: '%app.paginator.default_page_size%'
             $mobilePageSize: '%app.paginator.mobile_page_size%'
+
+    App\Repository\ItemsRepository:
+        arguments:
+            $fakeProductCount: '%app.fake_product_count%'

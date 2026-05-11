@@ -2,20 +2,18 @@
 
 ---
 
-This project is a demonstration of generic pagination service
+This project is a demonstration of generic pagination service using minimal symfony 7.4 application.
 
 ## Project setup
 
-### Requirements for local development
-- PHP 8.2 & composer
-
-### Requirements for containerized development
-- Docker & docker-compose
+### Requirements 
+- PHP 8.2 & composer for local development, or
+- Docker & docker-compose for containerized development
 
 ### Installation
 1. Clone the repository: `git clone https://github.com/lukaskupka/php-test.git`
 2. Navigate to the project directory: `cd php-test`
-3. Set up page size parameters in `config/services.yaml` file in `parameters:` section
+3. Set up `default_page_size`, `mobile_page_size` and `fake_item_count` parameters in `config/services.yaml`
 4. Install dependencies: `composer install`
 5. Run codesniffer: `composer lint:php`
 6. Run static analysis: `composer phpstan`
