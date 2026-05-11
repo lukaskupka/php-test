@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Entity\FakeProductEntity;
+use App\Dto\FakeProductItem;
+
 use function random_int;
 
 class FakeProductRepository
@@ -14,16 +15,17 @@ class FakeProductRepository
     /**
      * Creates fake products
      *
-     * @return FakeProductEntity[]
+     * @return array<FakeProductItem>
      */
     public function loadCollection(): array
     {
         /* create fake data */
         $products = [];
+
         for ($i = 1; $i <= self::FAKE_PRODUCT_COUNT; $i++) {
-            $products[] = new FakeProductEntity(
+            $products[] = new FakeProductItem(
                 'Product #' . str_pad((string) $i, 3, '0', STR_PAD_LEFT),
-                random_int(100, 999) * 100 + random_int(1, 99),
+                random_int(100, 999) * 100,
             );
         }
 

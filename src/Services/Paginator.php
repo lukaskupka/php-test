@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Entity\FakeProductEntity;
+use App\Dto\FakeProductItem;
+
 use function ceil;
 use function count;
 
 class Paginator
 {
+    /** @param array<FakeProductItem> $pagedItems */
     public function __construct(
         readonly private int $defaultPageSize,
         readonly private int $mobilePageSize,
@@ -19,16 +21,20 @@ class Paginator
     ) {
     }
 
-    /** @param FakeProductEntity[] $items */
-    public function init(array $items, $currentPage, bool $isMobile = false): void
+    /** @param array<FakeProductItem> $items */
+    public function init(array $items, int $currentPage, bool $isMobile = false): void
     {
-        $pageSize = $isMobile ? $this->mobilePageSize : $this->defaultPageSize;
-        $this->totalPages = count($items) > 0 ? (int) ceil(count($items) / $pageSize) : 1;
+        $pageSize = $isMobile
+            ? $this->mobilePageSize
+            : $this->defaultPageSize;
+        $this->totalPages = count($items) > 0
+            ? (int) ceil(count($items) / $pageSize)
+            : 1;
         $this->currentPage = $currentPage;
         $this->pagedItems = array_slice($items, ($currentPage - 1) * $pageSize, $pageSize);
     }
 
-    /** @return FakeProductEntity[] */
+    /** @return array<FakeProductItem> */
     public function getPagedItems(): array
     {
         return $this->pagedItems;

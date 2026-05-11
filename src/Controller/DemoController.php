@@ -4,33 +4,33 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Dto\PagedItemsDto;
+use App\Dto\PagedItems;
 use App\Services\FakeProductRepository;
 use App\Services\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
 
 class DemoController extends AbstractController
 {
-    public function __construct(private FakeProductRepository $productRepository, private Paginator $paginator)
-    {
+    public function __construct(
+        private readonly FakeProductRepository $productRepository,
+        private readonly Paginator $paginator,
+    ) {
     }
 
     #[Route('/demo', name: 'app_demo_index')]
-    public function index(
-        #[MapQueryParameter] int $page = 1
-    ): Response
+    public function index(Request $request): Response
     {
+        $page = $request->query->getInt('page', 1);
         $this->paginator->init($this->productRepository->loadCollection(), $page);
 
-        if ($page > $this->paginator->getTotalPages())
-        {
+        if ($page > $this->paginator->getTotalPages()) {
             return $this->redirectToRoute('app_demo_index', ['currentPage' => $this->paginator->getTotalPages()]);
         }
 
-        $data = new PagedItemsDto(
+        $data = new PagedItems(
             $this->paginator->getPagedItems(),
             $this->paginator->getCurrentPage(),
             $this->paginator->getTotalPages(),
@@ -38,7 +38,6 @@ class DemoController extends AbstractController
             $this->paginator->hasNextPage(),
         );
 
-        dump($page, $data);
-        return $this->render('demo.html.twig', [                 'data' => $data            ]        );
+        return $this->render('demo.html.twig', ['data' => $data]);
     }
 }

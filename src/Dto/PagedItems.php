@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Dto;
 
-use App\Entity\FakeProductEntity;
-
-readonly class PagedItemsDto
+readonly class PagedItems
 {
+    /** @param array<FakeProductItem> $getPagedItems */
     public function __construct(
         private array $getPagedItems,
         private int $getCurrentPage,
@@ -17,7 +16,7 @@ readonly class PagedItemsDto
     ) {
     }
 
-    /** @return FakeProductEntity[] */
+    /** @return array<FakeProductItem> */
     public function getGetPagedItems(): array
     {
         return $this->getPagedItems;

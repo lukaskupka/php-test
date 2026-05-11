@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Dto;
 
-readonly class FakeProductEntity
+readonly class FakeProductItem
 {
-    public function __construct(
-        private string $name,
-        private int $priceCents,
-    ) {
+    public function __construct(private string $name, private int $priceCents)
+    {
     }
 
     public function getName(): string
