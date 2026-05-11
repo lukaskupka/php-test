@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  php-apache:
+    ports:
+      - "80:80"
+    build:
+      context: './build/php'
+      args:
+        - uid=${UID}
+        - gid=${GID}
+    volumes:
+      - ..:/var/www/html
+      - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf
