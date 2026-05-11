@@ -57,7 +57,14 @@
             "@auto-scripts"
         ],
         "lint:php": "phpcs -q --report=full",
-        "fix:php": "phpcbf -q"
+        "fix:php": "phpcbf -q",
+        "test": "vendor/bin/phpunit tests/",
+        "phpstan": "vendor/bin/phpstan analyze",
+        "check": [
+            "@lint:php",
+            "@phpstan",
+            "@test"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -69,6 +76,8 @@
         }
     },
     "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^11.5",
         "slevomat/coding-standard": "^8.29",
         "squizlabs/php_codesniffer": "^4.0",

@@ -16,7 +16,7 @@ class DemoController extends AbstractController
 {
     public function __construct(
         private readonly ItemsRepository $productRepository,
-        private readonly Paginator       $paginator,
+        private readonly Paginator $paginator,
     ) {
     }
 
