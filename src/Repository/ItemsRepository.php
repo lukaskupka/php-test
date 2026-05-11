@@ -8,7 +8,7 @@ use App\Dto\Item;
 
 use function random_int;
 
-class FakeProductRepository
+class ItemsRepository
 {
     private const FAKE_PRODUCT_COUNT = 237;
 
@@ -17,7 +17,7 @@ class FakeProductRepository
      *
      * @return array<Item>
      */
-    public function loadCollection(): array
+    public function fakeLoadItems(): array
     {
         /* create fake data */
         $products = [];

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Dto\PagedItems;
-use App\Repository\FakeProductRepository;
+use App\Repository\ItemsRepository;
 use App\Service\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +15,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class DemoController extends AbstractController
 {
     public function __construct(
-        private readonly FakeProductRepository $productRepository,
-        private readonly Paginator $paginator,
+        private readonly ItemsRepository $productRepository,
+        private readonly Paginator       $paginator,
     ) {
     }
 
@@ -24,7 +24,7 @@ class DemoController extends AbstractController
     public function index(Request $request): Response
     {
         $page = $request->query->getInt('page', 1);
-        $this->paginator->init($this->productRepository->loadCollection(), $page);
+        $this->paginator->init($this->productRepository->fakeLoadItems(), $page);
 
         if ($page > $this->paginator->getTotalPages()) {
             return $this->redirectToRoute('app_demo_index', ['currentPage' => $this->paginator->getTotalPages()]);
